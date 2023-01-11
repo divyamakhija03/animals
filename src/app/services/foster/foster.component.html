@@ -1,0 +1,194 @@
+<style>
+    a{
+       color: black;
+       background-color: transparent;
+       text-decoration: none;
+    }
+    a:hover {
+       color: black;
+       background-color: #7AB730;
+    }
+    .padding{
+        padding: 10px 60px 60px 10px ;
+    }
+    /* img :hover {
+  transform: scale(1.4);
+    }
+    img{
+        transition: transform 150ms ease-in-out;    
+    } */
+    .post{
+        margin-left: 20%;
+    }
+ </style>
+
+<div >
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs ms-2 mt-2 pt-3">
+        <li [ngbNavItem]="1">
+            <a ngbNavLink >List of Animals</a>
+            <ng-template ngbNavContent>
+                <div class="row col-12 ms-2 me-5 padding">
+                    <div class="card" style="width: 50%;" *ngFor="let item of FosterList">
+                       <h5 class="card-header">{{item.Name}}</h5>
+                       <div class="card-body">
+                         <h5 class="card-title">Breed : {{item.Breed}}</h5>
+                         <p class="card-text">Behaviour : {{item.Behaviour}}</p>
+                         <button (click)="open(myModal)" class="btn" style="background-color:#7AB730;" >Foster</button>
+                       </div>
+                     </div>
+                </div>
+            </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+            <a ngbNavLink (click)="openUpdated()">FAQs</a>
+            <ng-template ngbNavContent>
+                <div [hidden]="!setVisible" class="padding">
+                    <div class="text-center"><h2>Foster FAQs</h2></div>
+                    <ngb-accordion #acc="ngbAccordion" *ngFor="let questions of FaqsList">
+                        <ngb-panel title="{{questions.question}}">
+                            <ng-template ngbPanelContent>
+                                {{questions.answer}}
+                            </ng-template>
+                        </ngb-panel>
+                    </ngb-accordion>    
+                </div>
+    
+            </ng-template>
+        </li>
+        <li [ngbNavItem]="3">
+            <a ngbNavLink (click)="openUpdated()">What is Fostering</a>
+            <ng-template ngbNavContent>
+                <div [hidden]="!setVisible">
+                    <div class="row col-12 pb-5 "  >
+                        <h6 class="text-uppercase fs-3 fw-bold p-2 mt-2" style="color: #7AB730;text-align: center;">Fostering Guide</h6>
+                        <div style="background-color: whitesmoke;border-radius: 30px;">
+                        <h6 class="text-uppercase fw-bold p-2 display-4 fs-6">what is fostering?</h6>
+                        <div style="border-radius: 20px;">
+                        <p class="fs-6 display-6"> 
+                            Fostering is the act of hosting an adoptable animal in your home, temporarily. <br>Through medical care, basic training, pictures, video, promotion and the stories you relay- as well as your foster's attendance at meet & greet or other events- your foster animal will get the exposure he or she needs to be considered by prospective adoptive families.<br>Our job is to screen and match them to the family that best suits the animals' needs, based on the info your provided- so they can go to a permanent loving home, just like yours.<br>In the simplest terms, you will change the world for an animal in need, without changing too much of your own.
+                        </p>
+                        </div>
+                        <hr>
+                        <h6 class="text-uppercase  fw-bold p-2 display-4 fs-6">what is my reponsibility as a foster?</h6>
+                        <ul class="display-6 fs-6">
+                            <li>You are a caretaker for our foster animal, but you have no ownership rights</li>
+                            <li>Your goal is to help animals become more “adoptable” through:
+                                <ul>
+                                    <li>Structure</li>
+                                    <li>Guidance </li>
+                                    <li>Training</li>
+                                    <li>Exercise</li>
+                                </ul>
+                            </li>
+                            <li>You treat the animal like one of your own-with some restrictions- until a permanent home is found</li>
+                            <li>You are a caretaker for our foster animal, but you have no ownership rights.</li>
+                        </ul>
+                        <hr>
+                        <h6 class="text-uppercase display-4 fs-6 fw-bold p-2">How long do foster pets stay?
+                        </h6>
+                        <ul class="display-6 fs-6">
+                            <li>Foster animals typically stay about 3-6 weeks, though this may vary depending on:
+                                <ul>
+                                    <li>Age</li>
+                                    <li>Size</li>
+                                    <li>Breed</li>
+                                    <li>Color</li>
+                                    <li>Health</li>
+                                    <li>Time of Year</li>
+                                </ul>
+                            </li>
+                            <li>Fostering is not a commitment to a set amount of time, rather it is a commitment to rehoming the animal</li>
+                            <li>The goal is to see the animal through to its new home, however long that may take- of course, barring unusual circumstances, emergencies and vacations
+
+                            </li>
+                        </ul>
+
+                    </div> 
+                  
+                </div>
+                </div>
+            </ng-template>
+        </li>
+    
+    </ul>
+    
+<div [ngbNavOutlet]="nav"></div>
+
+</div>
+
+<ng-template #myModal class="modal" let-m1>
+    <div class="modal-dialog">
+      <div class="modal-content p-3" style="width: 750px;">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h3 class="modal-title  fw-bold">Upload Information</h3>
+          <button type="button " class="btn-close ml-auto" 
+          (click)="m1.close()"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form [formGroup]="FosterForm">
+                <div class="row py-3">
+                    <div class="form-group col-5">
+                        <label for="caretaker" class="fw-bold text-lead"><h5>Primary Caretaker</h5></label>
+                    </div>
+                    <div class="form-group col-6">
+                        <input type="text" id="caretaker" class="form-control" formControlName="caretaker">
+                    </div>
+                </div>
+                <div class="row py-3">
+                    <div class="form-group col-5">
+                        <label for="occupation" class="fw-bold text-lead"><h5>Occupation of Caretaker</h5></label>
+                    </div>
+                    <div class="form-group col-6">
+                        <input type="text" id="occupation" class="form-control" formControlName="occupation">
+                    </div>
+                </div>
+                <div class="row py-3">
+                    <div class="form-group col-5">
+                        <label for="otherPets" class="fw-bold text-lead"><h5>Other Pets Any</h5></label>
+                    </div>
+                    <div class="form-group col-6">
+                        <input type="text" id="otherPets" class="form-control" formControlName="otherPets">
+                    </div>
+                </div>
+                <div class="row py-3">
+                    <div class="form-group col-5">
+                        <label for="reason" class="fw-bold text-lead"><h5>Reason For Fostering</h5></label>
+                    </div>
+                    <div class="form-group col-6">
+                        <input type="text" id="reason" class="form-control" formControlName="reason">
+                    </div>
+                </div>
+                <div class="row py-3">
+                    <div class="form-group col-5">
+                        <label for="fosterPeriod" class="fw-bold text-lead"><h5>Period of Fostering</h5></label>
+                    </div>
+                    <div class="form-group col-6">
+                        <input type="number" id="fosterPeriod" class="form-control" formControlName="fosterPeriod">
+                    </div>
+                </div>
+                <div class="row py-3">
+                    <div class="form-group col-5">
+                        <label for="documents" class="fw-bold text-lead"><h5>Upload Documents</h5></label>
+                    </div>
+                    <div class="form-group col-6">
+                        <input type="file" id="documents" class="form-control" formControlName="documents">
+                    </div>
+                </div>
+
+               
+            </form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button class="btn text-dark" style="background-color:#7AB730;" (click)="m1.close()" >Submit</button>
+            <button type="button" class="btn btn-danger" (click)="m1.close()">Close</button>
+        </div>
+  
+      </div>
+    </div>
+</ng-template>

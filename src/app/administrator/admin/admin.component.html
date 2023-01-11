@@ -1,0 +1,53 @@
+<div>
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs ms-2 mt-2 pt-3">
+        <li [ngbNavItem]="1">
+            <a ngbNavLink >Foster request</a>
+            <ng-template ngbNavContent>
+                <div class="row col-12 ms-2 me-5 padding">
+                    <div class="card" style="width: 50%;" *ngFor="let item1 of FosterData">
+                       <h5 class="card-header">{{item1.UserName}}</h5>
+                       <div class="card-body">
+                         <h5 class="card-title">{{item1.Documents}}</h5>
+                         <p class="card-text">{{item1.number_of_days}}</p>
+                         <button class="btn" style="background-color:#7AB730;" >Accept</button>
+                       </div>
+                     </div>
+                </div>
+            </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+            <a ngbNavLink >adoption request</a>
+            <ng-template ngbNavContent>
+                <div class="row col-12 ms-2 me-5 padding">
+                    <div class="card" style="width: 50%;" *ngFor="let item2 of adoptData">
+                       <h5 class="card-header">{{item2.UserName}}</h5>
+                       <div class="card-body">
+                         <h5 class="card-title">{{item2.Caretaker}}</h5>
+                         <p class="card-text">{{item2.Occupation}}</p>
+                         <button class="btn" style="background-color:#7AB730;" >Accept</button>
+                       </div>
+                     </div>
+                </div>
+            </ng-template>
+        </li>
+        <li [ngbNavItem]="3">
+            <a ngbNavLink >Volunteer request</a>
+            <ng-template ngbNavContent>
+                <div class="row col-12 ms-2 me-5 padding"  >
+                    <div class="card" style="width: 50%;" *ngFor="let item of volunteerData">
+                       <h5 class="card-header">{{item.UserName}}</h5>
+                       <div class="card-body">
+                         <h5 class="card-title">{{item.Occupation}}</h5>
+                         <p class="card-text">{{item.Loc}}</p>
+                         <button class="btn" style="background-color:#7AB730;" >Accept</button>
+                       </div>
+                     </div>
+                </div>
+            </ng-template>
+        </li>
+    
+    </ul>
+    
+<div [ngbNavOutlet]="nav"></div>
+
+</div>

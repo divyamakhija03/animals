@@ -1,0 +1,136 @@
+<style>
+    a{
+       color: black;
+       background-color: transparent;
+       text-decoration: none;
+    }
+    a:hover {
+       color: black;
+       background-color: #7AB730;
+    }
+    .padding{
+        padding: 10px 60px 60px 10px ;
+    }
+    /* img :hover {
+  transform: scale(1.4);
+    }
+    img{
+        transition: transform 150ms ease-in-out;    
+    } */
+    .post{
+        margin-left: 20%;
+    }
+ </style>
+
+<div>
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs ms-2 mt-2 pt-3">
+        <li [ngbNavItem]="1">
+            <a ngbNavLink >List of Animals</a>
+            <ng-template ngbNavContent>
+                <div class="row col-12 ms-2 me-5 padding">
+                    <div class="card" style="width: 50%;" *ngFor="let item of AdoptList">
+                       <h5 class="card-header">{{item.Name}}</h5>
+                       <div class="card-body">
+                         <h5 class="card-title">Breed : {{item.Breed}}</h5>
+                         <p class="card-text">Behaviour : {{item.Behaviour}}</p>
+                         <button (click)="open(myModal)" class="btn" style="background-color:#7AB730;" >Adopt</button>
+                       </div>
+                     </div>
+                </div>
+            </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+            <a ngbNavLink (click)="openUpdated()">FAQs</a>
+            <ng-template ngbNavContent>
+                <div [hidden]="!setVisible" class="padding">
+                    <div class="text-center"><h2>Adoption FAQs</h2></div>
+                    <ngb-accordion #acc="ngbAccordion" *ngFor="let questions of FaqsList">
+                        <ngb-panel type="success" title="{{questions.question}}">
+                            <ng-template ngbPanelContent>
+                                {{questions.answer}}
+                            </ng-template>
+                        </ngb-panel>
+                    </ngb-accordion>    
+                </div>
+    
+            </ng-template>
+        </li>
+        <li [ngbNavItem]="3">
+            <a ngbNavLink (click)="openUpdated()">Post Adopt Information</a>
+            <ng-template ngbNavContent>
+                <div [hidden]="!setVisible" style="text-align: center;">
+                    <div class="row col-12">
+                        <img src="assets\images\newDog.jpg" alt="alt" height="500px" width="600px" >
+                        <h6 class="text-uppercase fs-3 fw-bold p-2 mt-2" style="color: #7AB730;">Post Adoption Guide</h6>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo saepe suscipit perspiciatis nihil quia culpa praesentium ea dicta accusantium minus tenetur error nam perferendis, ratione recusandae nesciunt ullam optio rem doloremque voluptate. Deleniti est quam illo quia dolores dicta nobis sequi iusto consequuntur doloremque voluptate mollitia vel aliquid praesentium earum recusandae modi sed excepturi sapiente nesciunt, molestiae quaerat ad eaque. Ut, maxime nobis repellat similique doloribus officiis, temporibus alias iste iusto illo aliquam sapiente repudiandae mollitia sequi quisquam sunt dolorum? Ut modi dicta at reiciendis voluptatem aperiam eos, mollitia aliquid sapiente eligendi eum deserunt, veritatis in porro, molestias earum vel tempora nemo repellendus quae quia dolor. Cumque ad autem aut debitis quisquam nihil et, dolor eum asperiores nostrum tempora suscipit id, numquam maxime reprehenderit vel nesciunt! Maxime quaerat necessitatibus aperiam cumque eos incidunt, magnam error laborum doloribus, assumenda iure veritatis aliquam expedita minus pariatur! In iusto laborum, aspernatur quidem excepturi blanditiis sunt ullam, dolore assumenda obcaecati soluta rem. Rem sit, porro, alias voluptatum qui facere dignissimos ut omnis labore ratione provident totam similique ipsa rerum earum impedit corporis fugiat sequi. Ab consectetur at, quidem necessitatibus veniam quia, sit corrupti et qui, deserunt dolorum repellendus tempora fugit animi a quis inventore modi! Cum quaerat deleniti, dolorum hic cumque sint minus inventore beatae! Vitae dolorem officia sit dolor, totam ducimus atque porro nihil est pariatur corrupti, molestias, fugiat odio enim perferendis quod adipisci! Molestias a odit veritatis explicabo assumenda quaerat exercitationem consequuntur excepturi ullam, libero, veniam beatae. Repudiandae, delectus esse labore natus fugit sint facere reiciendis dicta optio quo distinctio aperiam? Numquam excepturi ad odio nisi voluptas eveniet illo dolorem reprehenderit sint natus voluptates modi exercitationem, ducimus illum tempore corporis quisquam non quos itaque ex saepe quia temporibus neque! Et numquam in facere consequuntur minima a eligendi natus saepe placeat omnis optio eum, facilis quasi ipsam enim accusantium voluptates impedit excepturi necessitatibus! Quibusdam modi earum at magnam veritatis, incidunt veniam sed animi harum autem tenetur corrupti assumenda. Accusantium fuga hic id, nemo iusto facere officia sint earum? Eligendi porro voluptatibus aliquid vitae molestiae obcaecati repellendus sed aliquam? Velit suscipit, quidem sit impedit adipisci illum. Nihil eius doloremque sunt quaerat repellendus asperiores dicta hic quod eaque, totam fuga obcaecati dolore quis nisi molestias vel excepturi! Hic aspernatur optio eaque, accusantium placeat quibusdam incidunt adipisci quod voluptatem reprehenderit rerum assumenda enim inventore ratione doloremque aperiam. Quaerat, odio molestiae! Saepe debitis delectus ut iure aperiam?</p>
+                    </div> 
+                  
+                </div>
+            </ng-template>
+        </li>
+    
+    </ul>
+    
+<div [ngbNavOutlet]="nav"></div>
+
+</div>
+
+<ng-template #myModal class="modal" let-m1>
+    <div class="modal-dialog">
+      <div class="modal-content p-3" style="width: 750px;">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h3 class="modal-title  fw-bold">Upload Information</h3>
+          <button type="button " class="btn-close ml-auto" 
+          (click)="m1.close()"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form [formGroup]="AdoptForm">
+                <div class="row py-3">
+                    <div class="form-group col-5">
+                        <label for="caretaker" class="fw-bold text-lead"><h5>Primary Caretaker</h5></label>
+                    </div>
+                    <div class="form-group col-6">
+                        <input type="text" id="caretaker" class="form-control" formControlName="caretaker">
+                    </div>
+                </div>
+                <div class="row py-3">
+                    <div class="form-group col-5">
+                        <label for="occupation" class="fw-bold text-lead"><h5>Occupation of Caretaker</h5></label>
+                    </div>
+                    <div class="form-group col-6">
+                        <input type="text" id="occupation" class="form-control" formControlName="occupation">
+                    </div>
+                </div>
+                <div class="row py-3">
+                    <div class="form-group col-5">
+                        <label for="otherPets" class="fw-bold text-lead"><h5>Other Pets Any</h5></label>
+                    </div>
+                    <div class="form-group col-6">
+                        <input type="text" id="otherPets" class="form-control" formControlName="otherPets">
+                    </div>
+                </div>
+                <div class="row py-3">
+                    <div class="form-group col-5">
+                        <label for="reason" class="fw-bold text-lead"><h5>Reason For Adopting</h5></label>
+                    </div>
+                    <div class="form-group col-6">
+                        <input type="text" id="reason" class="form-control" formControlName="reason">
+                    </div>
+                </div>
+               
+            </form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button class="btn text-dark" style="background-color:#7AB730;" (click)="m1.close()" >Submit</button>
+            <button type="button" class="btn btn-danger" (click)="m1.close()">Close</button>
+        </div>
+  
+      </div>
+    </div>
+</ng-template>

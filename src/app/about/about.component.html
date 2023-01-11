@@ -1,0 +1,168 @@
+<style>
+    a{
+       color: black;
+       background-color: transparent;
+       text-decoration: none;
+    }
+    a:hover {
+       color: black;
+       background-color: #7AB730;
+    }
+    .nav-pills .nav-link.active{
+        background-color: #7AB730;
+    }
+   
+ </style>
+<div class="container-fluid py-5" >
+    <div class="container" style="padding-top: 0px">
+        <div class="row gx-5">
+            <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100 rounded" src="assets/images/about.jpg" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="border-start border-5  ps-5 mb-5 " style="border-left: #7AB730;">
+                    <h6 class="text-uppercase fs-3 fw-bold" style="color: #7AB730;">About Us</h6>
+                    <h1 class="display-5 text-uppercase mb-0 ">We Keep Your Pets Happy All Time</h1>
+                </div>
+                <h4 class="text-body mb-4">Pets give us so much love, and we love them right back. It’s our job to keep them safe and secure at home. Of course, some pets are intrepid, daring or outrageous. </h4>
+                <div class="bg-light p-4">
+                    <!-- <ul class="nav nav-pills justify-content-between mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item w-50" role="presentation">
+                            <button class="nav-link text-uppercase w-100 active" id="pills-1-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-1" type="button" role="tab" aria-controls="pills100-1"
+                                aria-selected="true">Our Mission</button>
+                        </li>
+                        <li class="nav-item w-50" role="presentation">
+                            <button class="nav-link text-uppercase w-100" id="pills-2-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-2" type="button" role="tab" aria-controls="pills-2"
+                                aria-selected="false">Our Vission</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
+                            <p class="mb-0">Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam dolores dolore. Amet erat amet et magna</p>
+                        </div>
+                        <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
+                            <p class="mb-0">Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam dolores dolore. Amet erat amet et magna</p>
+                        </div>
+                    </div> -->
+                    <ul ngbNav #nav="ngbNav" class="nav nav-tabs nav-pills green justify-content-between mb-3 text-success" id="pills-tab" role="tablist"  >
+                        <li ngbNavItem class="nav-item w-50 text-success" role="presentation">
+                          <a ngbNavLink>OUR MISSION</a>
+                          <ng-template ngbNavContent class="nav-link text-uppercase w-100  text-success" class="tab-pane fade" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus pariatur ipsam veniam minus eligendi at, cumque voluptates laudantium esse consectetur vel nostrum atque magni non voluptatum nam, quibusdam autem quae eius natus officia sed nisi. Ad maiores dicta dolorem impedit inventore animi aliquid quia rem. Totam placeat fuga quod ipsam!</ng-template>
+                        </li>
+                        <li ngbNavItem class="nav-item w-50 text-success" role="presentation">
+                          <a ngbNavLink>OUR VISION</a>
+                          <ng-template ngbNavContent class="nav-link text-uppercase w-100 active" class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae voluptate animi porro commodi quibusdam culpa excepturi iusto dolores labore eius nemo corrupti minima necessitatibus qui sequi rerum incidunt, delectus pariatur doloremque voluptatum. Doloremque voluptates vero eum fugiat non inventore itaque.</ng-template>
+                        </li>
+                      </ul>
+                      <div [ngbNavOutlet]="nav"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="border-start border-5  ps-5 mb-5" style="max-width: 600px;">
+            <h6 class="text-uppercase fw-bold fs-3" style="color: #7AB730;">Services</h6>
+            <h1 class="display-5 text-uppercase mb-0">Our Excellent Pet Care Services</h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <!-- <fa-icon [icon]="icons.houseIcon" class="me-2"></fa-icon> -->
+                    <div>
+                        <h5 class="text-uppercase mb-3">Pet Adoption</h5>
+                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-food display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">Pet Fostering</h5>
+                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-grooming display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">Nearby Hospital</h5>
+                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-cat display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">Pet Daycare</h5>
+                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+                       
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="border-start border-5  ps-5 mb-5" style="max-width: 600px;">
+            <h6 class="text-uppercase fw-bold fs-3" style="color: #7AB730;">Get Involved</h6>
+            <h1 class="display-5 text-uppercase mb-0">Our Excellent Get Involved Activites</h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <!-- <fa-icon [icon]="icons.houseIcon" class="me-2"></fa-icon> -->
+                    <div>
+                        <h5 class="text-uppercase mb-3">Volunteer</h5>
+                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-food display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">Donate</h5>
+                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-grooming display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">Dog trainer</h5>
+                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-cat display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">Events</h5>
+                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

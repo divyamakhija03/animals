@@ -1,0 +1,55 @@
+<style>
+    a{
+       color: black;
+       background-color: transparent;
+       text-decoration: none;
+    }
+    .color:hover {
+       color: black;
+       background-color: #7AB730;
+    }
+ 
+ </style>
+
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0 fixed-top" >
+    <a href="index.html" class="navbar-brand ms-lg-5">
+        <h1 class="m-0 text-uppercase text-dark"><i class="bi bi-shop fs-1 text-primary me-3"></i>Shelter For Pets</h1>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0">.
+            <a href="" class="nav-item nav-link active" routerLink="/home" routerLinkActive="current">Home</a>
+            <a href="" class="nav-item nav-link active" routerLink="/about" routerLinkActive="current">About</a>
+            <ul ngbNav #nav="ngbNav" [activeId]="2" class="nav-tabs justify-content-center">
+                <li ngbDropdown class="nav-item" >
+                    <a href (click)="false" class="nav-link nav-item active" ngbDropdownToggle style="border: 0;">Services</a>
+                    <div ngbDropdownMenu>
+                        <button ngbDropdownItem routerLink="/adopt" class="color" routerLinkActive="current">Adopt</button>
+                        <button ngbDropdownItem routerLink="/foster" class="color" routerLinkActive="current">Foster</button>
+                    </div>
+                </li>
+
+            </ul>
+            <ul ngbNav #nav="ngbNav" [activeId]="2" class="nav-tabs justify-content-center">
+                <li ngbDropdown class="nav-item" >
+                    <a href (click)="false" class="nav-link nav-item active" ngbDropdownToggle style="border: 0;">Get Involved</a>
+                    <div ngbDropdownMenu>
+                        <button ngbDropdownItem routerLink="/volunteer" class="color" routerLinkActive="current">Volunteering</button>
+                        <button ngbDropdownItem routerLink="/donate" class="color" routerLinkActive="current">Donate</button>
+                        <button ngbDropdownItem routerLink="/fundraiser" class="color" routerLinkActive="current">Fundraiser</button>
+                    </div>
+                </li>
+
+            </ul>
+            <a href="" class="nav-item nav-link active" routerLink="/signin" routerLinkActive="current">Sign In</a>
+            <a href="" class="nav-item nav-link active" routerLink="/register" routerLinkActive="current">Register</a>
+            <a href="" class="nav-item nav-link active" routerLink="/admin" routerLinkActive="current">Admin</a>
+            
+            <!-- <a href="contact.html" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contact <i class="bi bi-arrow-right"></i></a> -->
+        </div>
+    </div>
+</nav>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>

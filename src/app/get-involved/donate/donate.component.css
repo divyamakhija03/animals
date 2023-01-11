@@ -1,0 +1,6 @@
+.bg-offer {
+    background: url(src\assets\images\donate2.jpg) top right no-repeat;
+    background-size: cover;
+    width: max-content;
+    height: 500px;
+}
