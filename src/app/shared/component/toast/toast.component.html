@@ -1,0 +1,6 @@
+<ngb-toast *ngFor="let toast of toastService.toasts" 
+[class]="toast.classname" 
+[delay]="toast.delay || 5000">
+<ng-template [ngIf]="toast.textOrTpl !='' ">{{toast.textOrTpl}}</ng-template>
+
+</ngb-toast>

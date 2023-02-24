@@ -1,3 +1,19 @@
+<style>
+    a{
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+     }
+     a:hover {
+        color: black;
+        background-color: #7AB730;
+     }
+     .padding{
+         padding: 10px 60px 60px 10px ;
+     }
+
+</style>
+
 <div>
     <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs ms-2 mt-2 pt-3">
         <li [ngbNavItem]="1">
@@ -16,7 +32,7 @@
             </ng-template>
         </li>
         <li [ngbNavItem]="2">
-            <a ngbNavLink >adoption request</a>
+            <a ngbNavLink >Adoption request</a>
             <ng-template ngbNavContent>
                 <div class="row col-12 ms-2 me-5 padding">
                     <div class="card" style="width: 50%;" *ngFor="let item2 of adoptData">

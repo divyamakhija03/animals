@@ -2,34 +2,37 @@
 <div class="container" style="margin-top: 65px;">
     <div class="row">
         <div class="col-6" style="padding-top: 60px;">
-            <figure><img src="assets/images/signup-image.jpg" alt="sing up image"></figure>
+            <figure><img src="assets/images/signup-image.jpg" alt="sign up image"></figure>
                     
         </div>
-        <div class="col-6" style="padding-top: 90px;">
+        <div class="col-6">
             <h2 class="form-title">Sign Up </h2>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" >
-                <label for="floatingInput"> Name</label>
-              </div>
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email address</label>
-              </div>
+            <form [formGroup]="registerUser">
               <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="floatingInput" >
-                <label for="floatingInput">Phone Number</label>
-              </div>
-              <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
-              </div>
-              <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Confirm Password</label>
-              </div>
-              <div style="padding-top: 40px;">
-                <button type="submit" class="btn btn-dark" style="height: 45px;width: 105px;"><a href="/home" style="text-decoration: none; color:white;">Log In</a></button>
-              </div>
+                  <input type="text" class="form-control" id="userName" formControlName="userName">
+                  <label for="userName">UserName</label>
+                </div>
+              <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="email"  formControlName="email">
+                  <label for="email">Email address</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="contact" formControlName="contact">
+                  <label for="contact">Phone Number</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="password" class="form-control" id="password"  formControlName="password">
+                  <label for="password">Password</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="password" class="form-control" id="password" formControlName="confirmPassword">
+                  <label for="password">Confirm Password</label>
+                </div>
+                <div style="padding-top: 40px;">
+                  <button type="submit" class="btn btn-dark" style="height: 45px;width: 105px;" (click)="validUsername()" [disabled]="this.registerUser.status === 'INVALID'">Register</button>
+                </div>
+
+            </form>
         </div>
     </div>
 </div>

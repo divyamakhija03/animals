@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdoptComponent } from './adopt/adopt.component';
 import { FosterComponent } from './foster/foster.component';
-import { NgbAccordionModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionModule, NgbDropdown, NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -18,7 +20,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     RouterModule,
     ReactiveFormsModule,
-    NgbAccordionModule
+    NgbAccordionModule,
+    HttpClientModule,
+    NgbDropdownModule,
+    SharedModule
   ],
   exports :[
     AdoptComponent

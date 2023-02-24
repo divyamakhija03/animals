@@ -11,31 +11,49 @@
     .padding{
         padding: 10px 60px 60px 10px ;
     }
-    /* img :hover {
-  transform: scale(1.4);
-    }
-    img{
-        transition: transform 150ms ease-in-out;    
-    } */
-    .post{
+   .post{
         margin-left: 20%;
     }
+    button:hover{
+        color: black;
+       background-color: #7AB730;
+    }
+    .btn-outline-primary {
+    --bs-btn-color: black;
+    --bs-btn-border-color: black;
+    }
  </style>
+
+ <form class="mt-5 ms-2">
+    <div class="mb-2">
+        <label for="category" class="fw-bold text-lead fst-italic"><h5>Category</h5></label>
+        <div ngbDropdown class="d-inline-block ms-2" style="color: black;">
+            <button type="button" class="btn btn-outline-primary ms-2" id="category" ngbDropdownToggle>
+                {{selectedCategory ?? 'select category'}}
+            </button>
+            <div ngbDropdownMenu>
+                <button class="btn category" type="button" ngbDropdown  *ngFor="let category of categories" 
+                 (click)="selectCategory(category)">{{category.CategoryName}}</button>
+            </div>
+        </div>
+    </div>
+ </form>
 
 <div>
     <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs ms-2 mt-2 pt-3">
         <li [ngbNavItem]="1">
-            <a ngbNavLink >List of Animals</a>
+            <a ngbNavLink>List of Animals</a>
             <ng-template ngbNavContent>
                 <div class="row col-12 ms-2 me-5 padding">
-                    <div class="card" style="width: 50%;" *ngFor="let item of AdoptList">
-                       <h5 class="card-header">{{item.Name}}</h5>
+                    <div class="card" style="width: 50%;" *ngFor="let animal of animals">
+                       <div hidden>{{animal.AnimalID}}</div>
+                       <h5  class="card-header">{{animal.AnimalName}}</h5>
                        <div class="card-body">
-                         <h5 class="card-title">Breed : {{item.Breed}}</h5>
-                         <p class="card-text">Behaviour : {{item.Behaviour}}</p>
-                         <button (click)="open(myModal)" class="btn" style="background-color:#7AB730;" >Adopt</button>
+                         <h5 class="card-title">Breed : {{animal.Breed}}</h5>
+                         <p class="card-text">Behaviour : {{animal.Behaviour}}</p>
+                         <button (click)="selectAnimal(animal,myModal)" class="btn" style="background-color:#7AB730;" >Adopt</button>
                        </div>
-                     </div>
+                    </div>
                 </div>
             </ng-template>
         </li>
@@ -88,7 +106,7 @@
   
         <!-- Modal body -->
         <div class="modal-body">
-            <form [formGroup]="AdoptForm">
+            <form [formGroup]="AdoptForm"  >
                 <div class="row py-3">
                     <div class="form-group col-5">
                         <label for="caretaker" class="fw-bold text-lead"><h5>Primary Caretaker</h5></label>
@@ -110,7 +128,7 @@
                         <label for="otherPets" class="fw-bold text-lead"><h5>Other Pets Any</h5></label>
                     </div>
                     <div class="form-group col-6">
-                        <input type="text" id="otherPets" class="form-control" formControlName="otherPets">
+                        <input type="text" id="otherPets" class="form-control" formControlName="otherPetsYN" >
                     </div>
                 </div>
                 <div class="row py-3">
@@ -121,13 +139,21 @@
                         <input type="text" id="reason" class="form-control" formControlName="reason">
                     </div>
                 </div>
+                <div class="row py-3">
+                    <div class="form-group col-5">
+                        <label for="slug" class="fw-bold text-lead"><h5>Slug</h5></label>
+                    </div>
+                    <div class="form-group col-6">
+                        <input type="text" id="slug" class="form-control" formControlName="slug">
+                    </div>
+                </div>
                
             </form>
         </div>
   
         <!-- Modal footer -->
         <div class="modal-footer">
-            <button class="btn text-dark" style="background-color:#7AB730;" (click)="m1.close()" >Submit</button>
+            <button class="btn text-dark" style="background-color:#7AB730;"  (click)="submitAdopt(m1)" >Submit</button>
             <button type="button" class="btn btn-danger" (click)="m1.close()">Close</button>
         </div>
   

@@ -1,5 +1,6 @@
 export interface Adopt{
-    "Name":string,
+    "AnimalID":number,
+    "AnimalName":string,
     "Breed":string,
     "Behaviour":string
 }

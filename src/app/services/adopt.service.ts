@@ -1,27 +1,31 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ApplicationConstants } from '../shared/constants/ApplicationConstant';
 import { Adopt } from '../shared/interfaces/adopt.interface';
 import { Faqs } from '../shared/interfaces/faq.interface';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdoptService {
 
-  constructor() { }
-  adoptListData : Adopt[] = [{"Name":"Jennilee","Breed":"Labrador","Behaviour":"loving"},
-  {"Name":"Lyle","Breed":"Pug","Behaviour":"cute"},
-  {"Name":"Helaina","Breed":"Labrador","Behaviour":"annoying"},
-  {"Name":"Rollins","Breed":"Labrador","Behaviour":"loving"},
-  {"Name":"Borden","Breed":"german Shepheard","Behaviour":"cute"},
-  {"Name":"Hi","Breed":"Labrador","Behaviour":"loving"},
-  {"Name":"Abbott","Breed":"Pug","Behaviour":"loving"},
-  {"Name":"Angela","Breed":"Pug","Behaviour":"annoying"},
-  {"Name":"Donny","Breed":"german Shepheard","Behaviour":"cute"},
-  {"Name":"Ardene","Breed":"german Shepheard","Behaviour":"cute"}]
+  constructor(private httpClient:HttpClient) { }
+  // adoptListData : Adopt[] = [{"Name":"Jennilee","Breed":"Labrador","Behaviour":"loving"},
+  // {"Name":"Lyle","Breed":"Pug","Behaviour":"cute"},
+  // {"Name":"Helaina","Breed":"Labrador","Behaviour":"annoying"},
+  // {"Name":"Rollins","Breed":"Labrador","Behaviour":"loving"},
+  // {"Name":"Borden","Breed":"german Shepheard","Behaviour":"cute"},
+  // {"Name":"Hi","Breed":"Labrador","Behaviour":"loving"},
+  // {"Name":"Abbott","Breed":"Pug","Behaviour":"loving"},
+  // {"Name":"Angela","Breed":"Pug","Behaviour":"annoying"},
+  // {"Name":"Donny","Breed":"german Shepheard","Behaviour":"cute"},
+  // {"Name":"Ardene","Breed":"german Shepheard","Behaviour":"cute"}]
 
-  fetchList():Adopt[]{
-    return this.adoptListData
-  }
+  // fetchList():Adopt[]{
+  //   return this.adoptListData
+  // }
   FAQsData : Faqs[] = [{
     "id":1,
     "question": "Why to Adopt?",
@@ -113,6 +117,19 @@ export class AdoptService {
   fetchFosterData():Faqs[]{
     return this.FosterData
   }
-  
+
+  fetchCategories():Observable<any>{
+    return this.httpClient.get(`${ApplicationConstants.APIURL}/getCategory`)
+  }
+  fetchAnimals(categoryID:number):Observable<any>{
+    return this.httpClient.get(`${ApplicationConstants.APIURL}/fetchAnimal/${categoryID}`)
+  }
+  addAdoptForm(adoptData:any):Observable<any>{
+    return this.httpClient.post(`${ApplicationConstants.APIURL}/addAdoptForm`,adoptData)
+  }
+  addFosterForm(fosterData:any):Observable<any>{
+    return this.httpClient.post(`${ApplicationConstants.APIURL}/addFosterForm`,fosterData)
+  }
+
   
 }

@@ -20,7 +20,30 @@
     .post{
         margin-left: 20%;
     }
+    button:hover{
+        color: black;
+       background-color: #7AB730;
+    }
+    .btn-outline-primary {
+    --bs-btn-color: black;
+    --bs-btn-border-color: black;
+    }
  </style>
+
+<form class="mt-5 ms-2">
+    <div class="mb-2">
+        <label for="category" class="fw-bold text-lead fst-italic"><h5>Category</h5></label>
+        <div ngbDropdown class="d-inline-block ms-2" style="color: black;">
+            <button type="button" class="btn btn-outline-primary ms-2" id="category" ngbDropdownToggle>
+                {{selectedCategory ?? 'select category'}}
+            </button>
+            <div ngbDropdownMenu>
+                <button class="btn category" type="button" ngbDropdown  *ngFor="let category of categories" 
+                 (click)="selectCategory(category)">{{category.CategoryName}}</button>
+            </div>
+        </div>
+    </div>
+ </form>
 
 <div >
     <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs ms-2 mt-2 pt-3">
@@ -29,11 +52,12 @@
             <ng-template ngbNavContent>
                 <div class="row col-12 ms-2 me-5 padding">
                     <div class="card" style="width: 50%;" *ngFor="let item of FosterList">
-                       <h5 class="card-header">{{item.Name}}</h5>
+                        <div hidden>{{item.AnimalID}}</div>
+                       <h5 class="card-header">{{item.AnimalName}}</h5>
                        <div class="card-body">
                          <h5 class="card-title">Breed : {{item.Breed}}</h5>
                          <p class="card-text">Behaviour : {{item.Behaviour}}</p>
-                         <button (click)="open(myModal)" class="btn" style="background-color:#7AB730;" >Foster</button>
+                         <button (click)="selectAnimal(item,myModal)" class="btn" style="background-color:#7AB730;" >Foster</button>
                        </div>
                      </div>
                 </div>
@@ -148,22 +172,6 @@
                 </div>
                 <div class="row py-3">
                     <div class="form-group col-5">
-                        <label for="otherPets" class="fw-bold text-lead"><h5>Other Pets Any</h5></label>
-                    </div>
-                    <div class="form-group col-6">
-                        <input type="text" id="otherPets" class="form-control" formControlName="otherPets">
-                    </div>
-                </div>
-                <div class="row py-3">
-                    <div class="form-group col-5">
-                        <label for="reason" class="fw-bold text-lead"><h5>Reason For Fostering</h5></label>
-                    </div>
-                    <div class="form-group col-6">
-                        <input type="text" id="reason" class="form-control" formControlName="reason">
-                    </div>
-                </div>
-                <div class="row py-3">
-                    <div class="form-group col-5">
                         <label for="fosterPeriod" class="fw-bold text-lead"><h5>Period of Fostering</h5></label>
                     </div>
                     <div class="form-group col-6">
@@ -178,6 +186,14 @@
                         <input type="file" id="documents" class="form-control" formControlName="documents">
                     </div>
                 </div>
+                <div class="row py-3">
+                    <div class="form-group col-5">
+                        <label for="slug" class="fw-bold text-lead"><h5>Mention Slug</h5></label>
+                    </div>
+                    <div class="form-group col-6">
+                        <input type="text" id="slug" class="form-control" formControlName="slug">
+                    </div>
+                </div>
 
                
             </form>
@@ -185,7 +201,7 @@
   
         <!-- Modal footer -->
         <div class="modal-footer">
-            <button class="btn text-dark" style="background-color:#7AB730;" (click)="m1.close()" >Submit</button>
+            <button class="btn text-dark" style="background-color:#7AB730;" (click)="submitFoster(m1)" >Submit</button>
             <button type="button" class="btn btn-danger" (click)="m1.close()">Close</button>
         </div>
   

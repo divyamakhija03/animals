@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ngbCarouselTransitionIn } from '@ng-bootstrap/ng-bootstrap/carousel/carousel-transition';
 import { NgbCarousel, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FundraiserComponent } from './fundraiser/fundraiser.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -20,7 +21,8 @@ import { FundraiserComponent } from './fundraiser/fundraiser.component';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ]
 })
 export class GetInvolvedModule { }

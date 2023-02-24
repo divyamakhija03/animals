@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { ComponentModule } from "./shared/component/component.module";
 import { AdministratorModule } from './administrator/administrator.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AdministratorModule } from './administrator/administrator.module';
         ServicesModule,
         HomeModule,
         ComponentModule,
-        AdministratorModule
+        AdministratorModule,
+        AuthenticationModule
     ]
 })
 export class AppModule { }
